@@ -1,1 +1,1 @@
-app.module('Roadmap', []);
+angular.module('Roadmap', []);

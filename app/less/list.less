@@ -1,0 +1,38 @@
+section.lists {
+  display: flex;
+}
+
+section.list {
+  .card-shadow;
+  background-color: #fff;
+  border: 1px solid @border-color;
+  border-radius: @bd;
+  min-height: 200px;
+  margin-top: 20px;
+  width: 29%;
+  margin-right: 1%;
+  padding: 20px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .task-text {
+    border: 1px solid @light-gray;
+    margin-bottom: 5px;
+    cursor: pointer;
+    min-height: 10px;
+    padding: 10px;
+    border-radius: @bd;
+
+    &:hover {
+      background-color: @light-gray;
+    }
+
+    &:active {
+      cursor: grabbing;
+      cursor: -webkit-grabbing;
+      cursor: -moz-grabbing;
+    }
+  }
+}

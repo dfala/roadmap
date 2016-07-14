@@ -1,7 +1,14 @@
 <% include ./partials/header.ejs %>
 
-<h1>hi there</h1>
+<section class="container">
+  <% include ./partials/timeline.ejs %>
 
-{{name}}
+  <section class="lists">
+    <% include ./partials/list.ejs %>
+    <% include ./partials/list.ejs %>
+    <% include ./partials/list.ejs %>
+    <% include ./partials/list.ejs %>
+  </section>
+</section>
 
 <% include ./partials/footer.ejs %>

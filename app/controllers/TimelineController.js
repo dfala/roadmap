@@ -1,4 +1,4 @@
-app.module('Roadmap')
+angular.module('Roadmap')
 
 .controller('TimelineController', ['$scope', function ($scope) {
   $scope.name = 'Daniel';
