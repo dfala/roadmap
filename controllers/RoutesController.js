@@ -9,5 +9,10 @@ module.exports = function (app) {
 };
 
 Routes.index = function (req, res) {
-  res.render('index');
+  List.find({})
+  .populate('tasks')
+  .exec(function (err, result) {
+    if (err) return res.status(500).send(err);
+    res.render('index', {lists: result});
+  });
 };

@@ -1,14 +1,28 @@
 <% include ./partials/header.ejs %>
 
-<section class="container" ng-controller="MainController">
+<section class="container" ng-controller="MainController" ng-init="init(<%= JSON.stringify(lists) %>)">
   <% include ./partials/timeline.ejs %>
 
   <section class="lists">
-    <% include ./partials/list.ejs %>
-    <% include ./partials/list.ejs %>
-    <% include ./partials/list.ejs %>
-    <% include ./partials/list.ejs %>
+
+    <section class="list" ng-repeat="list in lists">
+      <h3> {{list.title}} </h3>
+
+      <div class="task-text" ng-repeat="task in list.tasks">
+        <p> {{task.title}} </p>
+      </div>
+
+      <div class="task-text input">
+        <form ng-submit="createTask(newTask, list._id, $index); newTask= ''">
+          <input type="text" placeholder="New project..." ng-model="newTask" />
+        </form>
+      </div>
+    </section>
+
+    <% include ./partials/new-list.ejs %>
   </section>
+
+  <% include ./partials/task-modal.ejs %>
 </section>
 
 <% include ./partials/footer.ejs %>

@@ -1,0 +1,23 @@
+@modal-zindex: 1000;
+
+.modal-backdrop {
+  position: fixed;
+  background-color: rgba(71, 71, 71, 0.47);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+}
+
+section.modal {
+  width: 700px;
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 1000;
+  border-left: 1px solid @border-color;
+}
