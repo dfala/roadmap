@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 999;
+  z-index: 9;
 }
 
 section.modal {
@@ -18,6 +18,15 @@ section.modal {
   right: 0;
   height: 100vh;
   background-color: #fff;
-  z-index: 1000;
+  z-index: 10;
   border-left: 1px solid @border-color;
+
+  padding: 20px;
+  box-shadow: -16px 0px 20px 2px rgba(0, 0, 0, 0.11);
+
+  .x-modal {
+    float: right;
+    height: 30px;
+    cursor: pointer;
+  }
 }

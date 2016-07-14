@@ -36,4 +36,26 @@ angular.module('Roadmap')
     })
   };
 
+  $scope.activateTask = function (task) {
+    $scope.modalOpen = true;
+    task.start = new Date(task.start);
+    task.end = new Date(task.end);
+    $scope.active = task;
+  };
+
+  $scope.closeModal = function () {
+    $scope.modalOpen = false;
+  };
+
+  $scope.updateActive = function (task) {
+    apiService.updateActive(task)
+    .then(function (response) {
+      alertify.success('Date updated');
+    })
+    .catch(function (err) {
+      console.error(err);
+      alertify.error('Ooops! There was an error.');
+    });
+  };
+
 }]);

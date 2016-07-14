@@ -8,8 +8,8 @@
     <section class="list" ng-repeat="list in lists">
       <h3> {{list.title}} </h3>
 
-      <div class="task-text" ng-repeat="task in list.tasks">
-        <p> {{task.title}} </p>
+      <div class="task-text" ng-repeat="task in list.tasks" ng-click="activateTask(task)">
+        <p> {{task.content}} </p>
       </div>
 
       <div class="task-text input">

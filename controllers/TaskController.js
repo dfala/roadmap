@@ -18,3 +18,19 @@ taskCtrl.create = function (req, res) {
     );
   })
 };
+
+
+taskCtrl.update = function (req, res) {
+  Task.findById(req.params.taskId, function (err, task) {
+    if (err) return res.status(404).send(err);
+
+    task.content  = req.body.content;
+    task.start    = req.body.start;
+    task.end = req.body.end;
+
+    task.save(function (err, result) {
+      if (err) return res.status(500).send(err);
+      return res.json(result);
+    })
+  })
+};

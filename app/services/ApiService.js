@@ -6,7 +6,7 @@ angular.module('Roadmap')
   service.createTask = function (task, listId) {
     var data = {
       list_id: listId,
-      title: task
+      content: task
     };
 
     return $http.post('/api/task', data)
@@ -14,6 +14,10 @@ angular.module('Roadmap')
 
   service.createList = function (list) {
     return $http.post('/api/list', {title: list})
+  };
+
+  service.updateActive = function (task) {
+    return $http.put('/api/task/' + task._id, task);
   };
 
   return service;
