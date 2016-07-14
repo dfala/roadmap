@@ -34,5 +34,30 @@ section.list {
       cursor: -webkit-grabbing;
       cursor: -moz-grabbing;
     }
+
+    &.input {
+      padding: 0;
+      height: 42px;
+
+      form, input {
+        height: 100%;
+      }
+
+      input {
+        width: 100%;
+        border: 0;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 400;
+
+        &::-webkit-input-placeholder {
+          font-weight: 300;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
 }

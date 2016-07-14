@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'app')));
 
 
 require('./controllers/RoutesController.js')(app);
-// require('./controllers/ApiController.js')(app, passport);
+require('./controllers/ApiController.js')(app, passport);
 
 // Connections
 if (keys.env == 'DEVELOPMENT') { var portNum = 3000; } else { var portNum = 80; }

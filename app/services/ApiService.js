@@ -1,5 +1,11 @@
 angular.module('Roadmap')
 
-.factory('ApiService', ['$http', function ($http) {
+.factory('apiService', ['$http', function ($http) {
+  var service = {};
 
+  service.createTask = function (task) {
+    return $http.post('/api/task', {title: task})
+  };
+
+  return service;
 }]);
