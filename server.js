@@ -4,7 +4,6 @@ var express     = require('express'),
     mongoose    = require('mongoose'),
     session     = require('express-session'),
     passport    = require('passport'),
-    CronJob     = require('cron').CronJob,
     ejs         = require('ejs'),
     path        = require('path'),
     keys        = require('./config/keys.js');
@@ -29,8 +28,8 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.static(path.join(__dirname, 'app')));
 
 
-require('./controllers/Routes.js')(app);
-require('./controllers/Api.js')(app, passport);
+require('./controllers/RoutesController.js')(app);
+// require('./controllers/ApiController.js')(app, passport);
 
 // Connections
 if (keys.env == 'DEVELOPMENT') { var portNum = 3000; } else { var portNum = 80; }
