@@ -6,7 +6,7 @@ angular.module('Roadmap')
   service.createTask = function (task, listId) {
     var data = {
       list_id: listId,
-      content: task
+      title: task
     };
 
     return $http.post('/api/task', data)

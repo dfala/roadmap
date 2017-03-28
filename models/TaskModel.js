@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
 var TaskSchema = new mongoose.Schema({
-  content: { type: String, required: true },
+  title: { type: String, required: true },
+  content: { type: String, required: false },
   start: { type: Date },
   end: { type: Date },
   created_by: { type: String, required: true, default: 'Jane' },
