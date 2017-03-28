@@ -1,6 +1,6 @@
 angular.module('Roadmap')
 
-.directive('timeline', [function () {
+.directive('timeline', ['$rootScope', function ($rootScope) {
   return {
     restrict: 'A',
     scope: {
@@ -14,8 +14,6 @@ angular.module('Roadmap')
         })
       });
 
-      console.log(tasks);
-
       var container = document.getElementById('visualization');
 
       // Create a DataSet (allows two way data-binding)
@@ -26,6 +24,21 @@ angular.module('Roadmap')
 
       // Create a Timeline
       var timeline = new vis.Timeline(container, items, options);
+
+      $rootScope.$on('task updated', function (e, data) {
+        tasks = tasks.map(function (task) {
+          if (task._id === data._id) return data;
+          return task;
+        }).filter(function (task) {
+          if (task.start) return true;
+          return false;
+        });
+
+        items = new vis.DataSet(tasks);
+
+        timeline.destroy();
+        timeline = new vis.Timeline(container, items, options);
+      })
     }
   }
 }]);

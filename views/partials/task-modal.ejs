@@ -2,22 +2,24 @@
   <div class="modal-backdrop animated-fast fadeIn" ng-click="closeModal()"></div>
   <section class="modal animated-fast slideInRight" ng-click="$event.stopPropagation()">
     <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
-    <h1>{{active.title}}</h1>
+    <h1>{{active.content}}</h1>
 
     <div class="dates">
       <div class="date">
         <h4>Start Date</h4>
-        <input type="date" ng-change="updateActive(active)" ng-model="active.start">
+        <input type="date" ng-model="active.start">
       </div>
 
       <div class="date">
-        <h4>End Date</h4>
-        <input type="date" ng-change="updateActive(active)" ng-model="active.start">
+        <h4>End Date (optional)</h4>
+        <input type="date" ng-model="active.end">
       </div>
     </div>
 
     <div class="content">
-      <textarea ng-model="active.content"></textarea>
+      <textarea ng-model="active.description"></textarea>
     </div>
+
+    <button ng-click="updateActive(active)">Save changes</button>
   </section>
 </div>

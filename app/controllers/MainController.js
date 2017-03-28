@@ -1,9 +1,9 @@
 angular.module('Roadmap')
 
-.controller('MainController', ['$scope', 'apiService', '$timeout', function ($scope, apiService, $timeout) {
+.controller('MainController', ['$scope', 'apiService', '$timeout', '$rootScope',
+function ($scope, apiService, $timeout, $rootScope) {
 
   $scope.init = function (lists) {
-    console.warn(lists);
     $scope.lists = lists;
   };
 
@@ -50,7 +50,8 @@ angular.module('Roadmap')
   $scope.updateActive = function (task) {
     apiService.updateActive(task)
     .then(function (response) {
-      alertify.success('Date updated');
+      $rootScope.$emit('task updated', response.data)
+      alertify.success('Your story has been updated successfully');
     })
     .catch(function (err) {
       console.error(err);

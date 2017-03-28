@@ -45,5 +45,5 @@ db.once('open', function (callback) {
 
 
 app.listen(portNum, function () {
-    console.log('Jake is watching on port: ' + portNum, 'in ' + keys.env + ' mode.');
+    console.log('Active on port: ' + portNum, 'in ' + keys.env + ' mode.');
 });

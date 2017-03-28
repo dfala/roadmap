@@ -24,9 +24,10 @@ taskCtrl.update = function (req, res) {
   Task.findById(req.params.taskId, function (err, task) {
     if (err) return res.status(404).send(err);
 
-    task.content  = req.body.content;
-    task.start    = req.body.start;
-    task.end = req.body.end;
+    task.content = req.body.content;
+    task.description = req.body.description;
+    if (new Date(req.body.start) > new Date(1990,00,01)) task.start = req.body.start;
+    if (new Date(req.body.end) > new Date(1990,00,01)) task.end = req.body.end;
 
     task.save(function (err, result) {
       if (err) return res.status(500).send(err);

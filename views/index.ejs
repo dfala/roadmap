@@ -1,6 +1,6 @@
 <% include ./partials/header.ejs %>
 
-<section ng-controller="MainController" ng-init="init(<%= JSON.stringify(lists) %>)">
+<section ng-controller="MainController" ng-init="init(<%= JSON.stringify(lists) %>)" ng-cloak>
   <% include ./partials/timeline.ejs %>
 
   <section class="lists container">
@@ -9,7 +9,7 @@
       <h3> {{list.title}} </h3>
 
       <div class="task-text" ng-repeat="task in list.tasks" ng-click="activateTask(task)">
-        <p> {{task.title}} </p>
+        <p> {{task.content}} </p>
       </div>
 
       <div class="task-text input">

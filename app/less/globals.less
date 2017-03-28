@@ -99,7 +99,7 @@ blockquote {
 	font-weight: 400;
 	line-height: 30px;
 }
-pre {
+pre, textarea {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	font-style: normal;
@@ -108,7 +108,41 @@ pre {
 	line-height: 18.5714px;
 }
 
+textarea {
+	border-radius: @br;
+	border: 1px solid @border-color;
+	padding: 10px 15px;
+
+	&:focus {
+		outline: none;
+		border: 1px solid @green;
+	}
+}
+
 * {
 	box-sizing: border-box;
 	color: #4d4d4d;
+}
+
+button {
+	padding: 10px 15px;
+	background-color: @green;
+	color: #fff;
+	border-radius: @br;
+	border: 1px solid lighten(@green, 10%);
+	font-size: 14px;
+	box-shadow: @shadow;
+	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		background-color: darken(@green, 5%);
+	}
+
+	&:active {
+		background-color: darken(@green, 2%);
+	}
 }
