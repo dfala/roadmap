@@ -1,13 +1,19 @@
 <div ng-if="modalOpen">
-  <div class="modal-backdrop" ng-click="closeModal()"></div>
-  <section class="modal" ng-click="$event.stopPropagation()">
+  <div class="modal-backdrop animated-fast fadeIn" ng-click="closeModal()"></div>
+  <section class="modal animated-fast slideInRight" ng-click="$event.stopPropagation()">
     <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
     <h1>{{active.content}}</h1>
 
-    <h4>Start Date</h4>
-    <input type="date" ng-change="updateActive(active)" ng-model="active.start">
+    <div class="dates">
+      <div class="date">
+        <h4>Start Date</h4>
+        <input type="date" ng-change="updateActive(active)" ng-model="active.start">
+      </div>
 
-    <h4>End Date</h4>
-    <input type="date" ng-change="updateActive(active)" ng-model="active.end">
+      <div class="date">
+        <h4>End Date</h4>
+        <input type="date" ng-change="updateActive(active)" ng-model="active.start">
+      </div>
+    </div>
   </section>
 </div>
