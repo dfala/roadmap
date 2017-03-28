@@ -17,11 +17,11 @@ section.modal {
   top: 0;
   right: 0;
   height: 100vh;
-  background-color: #fff;
+  background-color: @light-gray;
   z-index: 10;
+  overflow-y: auto;
 
-  padding: 20px;
-  box-shadow: 14px 0 30px 10px #272727;
+  box-shadow: 0 0 6px -2px #000;
 
   .dates {
     display: flex;
@@ -29,13 +29,19 @@ section.modal {
 
     .date {
       margin-right: 10px;
+      width: 155px;
     }
+  }
+
+  @local-height: 200px;
+  .description {
+    min-height: @local-height;
   }
 
   textarea {
     width: 100%;
     resize: vertical;
-    min-height: 200px;
+    min-height: @local-height;
     margin-bottom: 15px;
   }
 
@@ -43,5 +49,41 @@ section.modal {
     float: right;
     height: 30px;
     cursor: pointer;
+  }
+
+  .content {
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  .footer {
+    border-top: 1px solid @border-color;
+    padding: 20px;
+
+    .menu {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      .item {
+        display: flex;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: @br;
+
+        p {
+          margin-left: 5px;
+        }
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+
+      .icon, p {
+        font-size: 14px;
+        color: @almost-black;
+      }
+    }
   }
 }

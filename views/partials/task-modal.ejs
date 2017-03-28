@@ -1,25 +1,47 @@
 <div ng-if="modalOpen">
   <div class="modal-backdrop animated-fast fadeIn" ng-click="closeModal()"></div>
   <section class="modal animated-fast slideInRight" ng-click="$event.stopPropagation()">
-    <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
-    <h1>{{active.content}}</h1>
-
-    <div class="dates">
-      <div class="date">
-        <h4>Start Date</h4>
-        <input type="date" ng-model="active.start">
-      </div>
-
-      <div class="date">
-        <h4>End Date (optional)</h4>
-        <input type="date" ng-model="active.end">
-      </div>
-    </div>
-
     <div class="content">
-      <textarea ng-model="active.description"></textarea>
+      <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
+      <h1>{{active.content}}</h1>
+
+      <div class="dates">
+        <div class="date">
+          <h4>Start Date</h4>
+          <p ng-if="!editMode">{{active.start | date:'MMM d, yyyy'}}</p>
+          <input type="date" ng-model="active.start" ng-if="editMode">
+        </div>
+
+        <div class="date">
+          <h4>End Date (optional)</h4>
+          <p ng-if="!editMode">{{active.end | date:'MMM d, yyyy'}}</p>
+          <input type="date" ng-model="active.end" ng-if="editMode">
+        </div>
+      </div>
+
+      <div class="description">
+        <h4>Description</h4>
+        <textarea ng-model="active.description" ng-if="editMode"></textarea>
+<pre ng-if="!editMode">
+{{active.description}}
+</pre>
+      </div>
+
+      <button ng-click="updateActive(active)" ng-if="editMode">Save changes</button>
     </div>
 
-    <button ng-click="updateActive(active)">Save changes</button>
+    <div class="footer">
+      <div class="menu">
+        <div class="item" ng-click="toggleEditMode()">
+          <div class="icon ion-android-create"></div>
+          <p ng-if="!editMode">Edit</p>
+          <p ng-if="editMode">Cancel Edit</p>
+        </div>
+        <div class="item">
+          <div class="icon ion-trash-b"></div>
+          <p>Delete</p>
+        </div>
+      </div>
+    </div>
   </section>
 </div>

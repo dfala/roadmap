@@ -47,11 +47,17 @@ function ($scope, apiService, $timeout, $rootScope) {
     $scope.modalOpen = false;
   };
 
+  $scope.toggleEditMode = function () {
+    $scope.editMode = !$scope.editMode;
+  };
+
   $scope.updateActive = function (task) {
+    $scope.editMode = false;
+
     apiService.updateActive(task)
     .then(function (response) {
       $rootScope.$emit('task updated', response.data)
-      alertify.success('Your story has been updated successfully');
+      alertify.success('Successfully updated your story.');
     })
     .catch(function (err) {
       console.error(err);
