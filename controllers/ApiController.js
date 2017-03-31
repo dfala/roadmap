@@ -5,5 +5,6 @@ var TaskController    =   require('./TaskController'),
 module.exports = function (app, passport) {
   app.post('/api/task', TaskController.create);
   app.put('/api/task/:taskId', TaskController.update);
+  app.delete('/api/task/:taskId', TaskController.delete);
   app.post('/api/list', ListController.create);
 }

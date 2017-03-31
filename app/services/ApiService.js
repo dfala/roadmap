@@ -20,5 +20,9 @@ angular.module('Roadmap')
     return $http.put('/api/task/' + task._id, task);
   };
 
+  service.deleteTask = function (taskId) {
+    return $http.delete('/api/task/' + taskId);
+  }
+
   return service;
 }]);

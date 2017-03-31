@@ -19,6 +19,19 @@
         </div>
       </div>
 
+      <div class="links">
+        <h4>Important links</h4>
+        <div class="block" ng-if="!editMode && active.links && active.links.length">
+          <a href="{{link}}" ng-repeat="link in active.links">{{link}}</a>
+        </div>
+
+        <div class="block" ng-if="editMode">
+          <input ng-model="active.links[0]" placeholder="https://jira.lucidchart.com/browse/"/>
+          <input ng-model="active.links[1]" placeholder="https://confluence.lucidchart.com/display/"/>
+          <input ng-model="active.links[2]" placeholder="https://docs.google.com/spreadsheets/d/"/>
+        </div>
+      </div>
+
       <div class="description">
         <h4>Description</h4>
         <textarea ng-model="active.description" ng-if="editMode"></textarea>
@@ -37,7 +50,7 @@
           <p ng-if="!editMode">Edit</p>
           <p ng-if="editMode">Cancel Edit</p>
         </div>
-        <div class="item">
+        <div class="item" ng-click="deleteTask(active)">
           <div class="icon ion-trash-b"></div>
           <p>Delete</p>
         </div>

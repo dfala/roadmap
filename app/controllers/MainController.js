@@ -66,6 +66,18 @@ function ($scope, apiService, $timeout, $rootScope) {
     });
   };
 
+  $scope.deleteTask = function (task) {
+    apiService.deleteTask(task._id)
+    .then(function (response) {
+      console.info(response);
+      alertify.success('Task successfully removed.')
+    })
+    .catch(function (err) {
+      console.error(err);
+      alertify.error('There was a problem with your request.')
+    })
+  };
+
   $rootScope.$on('timeline task clicked', function(e, task) {
     $scope.activateTask(task);
     $scope.$digest();
