@@ -45,6 +45,7 @@ function ($scope, apiService, $timeout, $rootScope) {
 
   $scope.closeModal = function () {
     $scope.modalOpen = false;
+    $scope.editMode = false;
   };
 
   $scope.toggleEditMode = function () {
@@ -64,5 +65,10 @@ function ($scope, apiService, $timeout, $rootScope) {
       alertify.error('Ooops! There was an error.');
     });
   };
+
+  $rootScope.$on('timeline task clicked', function(e, task) {
+    $scope.activateTask(task);
+    $scope.$digest();
+  });
 
 }]);

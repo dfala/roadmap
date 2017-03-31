@@ -24,6 +24,12 @@ angular.module('Roadmap')
 
       // Create a Timeline
       var timeline = new vis.Timeline(container, items, options);
+      timeline.on('click', function (data) {
+        var itemId = data.item;
+        if (!itemId) return;
+
+        $rootScope.$emit('timeline task clicked', timeline.itemsData._data[itemId]);
+      });
 
       $rootScope.$on('task updated', function (e, data) {
         tasks = tasks.map(function (task) {
