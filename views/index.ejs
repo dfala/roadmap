@@ -1,9 +1,20 @@
 <% include ./partials/header.ejs %>
 
 <section ng-controller="MainController" ng-init="init(<%= JSON.stringify(lists) %>)" ng-cloak>
+  <section class="auth" ng-if="!auth">
+    <div class="message">
+      <h1>What's the secret code?</h1>
+      <form ng-submit="authenticate(password)">
+        <input type="password" ng-model="password" placeholder="Password">
+        <br/>
+        <button>GET IN</button>
+      </form>
+    </div>
+  </section>
+
   <% include ./partials/timeline.ejs %>
 
-  <section class="lists container">
+  <section class="lists container" ng-if="auth">
 
     <section class="list {{colors[$index]}}" ng-repeat="list in lists">
       <h3> {{list.title}} </h3>

@@ -6,6 +6,17 @@ function ($scope, apiService, $timeout, $rootScope) {
   $scope.init = function (lists) {
     $scope.lists = lists;
     $scope.colors = ['blue', 'orange', 'purple', 'green'];
+    if (localStorage.auth) $scope.auth = true;
+  };
+
+  $scope.authenticate = function (passport) {
+    if (passport == 'guatemalaisthebest') {
+      $scope.auth = true;
+      localStorage.auth = true;
+      alertify.success('Welcome!');
+    } else {
+      alertify.error('HAHAHA! You got it wrong!');
+    }
   };
 
   $scope.createTask = function (task, listId, listIndex) {
