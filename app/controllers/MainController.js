@@ -5,7 +5,7 @@ function ($scope, apiService, $timeout, $rootScope) {
 
   $scope.init = function (lists) {
     $scope.lists = lists;
-    $scope.colors = ['blue', 'orange', 'purple'];
+    $scope.colors = ['blue', 'orange', 'purple', 'green'];
   };
 
   $scope.createTask = function (task, listId, listIndex) {

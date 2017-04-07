@@ -7,7 +7,14 @@ angular.module('Roadmap')
       lists: '='
     },
     link: function (scope, elem, attrs) {
-      var colors = ['blue', 'orange', 'purple'];
+      var colors = ['blue', 'orange', 'purple', 'green'];
+      var groups = scope.lists.map(function (list) {
+        return {
+          id: list._id,
+          content: list.title
+        }
+      });
+
       var tasks = [];
       scope.lists.forEach(function (list, listIndex) {
         // if (listIndex === 1) return;
@@ -15,7 +22,10 @@ angular.module('Roadmap')
         list.tasks.forEach(function (task) {
           if (task.start) {
             task.className = colors[listIndex];
-            task.nestedGroup = list._id;
+            task.id = task._id;
+            task.title = task.content;
+            task.group = list._id;
+            // task.editable.updateTime = true;
             return tasks.push(task);
           }
         })
@@ -35,7 +45,7 @@ angular.module('Roadmap')
       };
 
       // Create a Timeline
-      var timeline = new vis.Timeline(container, items, options);
+      var timeline = new vis.Timeline(container, items, groups, options);
       timeline.on('click', function (data) {
         var itemId = data.item;
         if (!itemId) return;
