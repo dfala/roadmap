@@ -5,7 +5,7 @@
 
   <section class="lists container">
 
-    <section class="list" ng-repeat="list in lists">
+    <section class="list {{colors[$index]}}" ng-repeat="list in lists">
       <h3> {{list.title}} </h3>
 
       <div class="task-text" ng-repeat="task in list.tasks" ng-click="activateTask(task)">

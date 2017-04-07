@@ -3,7 +3,8 @@
   <section class="modal animated-fast slideInRight" ng-click="$event.stopPropagation()">
     <div class="content">
       <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
-      <h1>{{active.content}}</h1>
+      <h1 ng-if="!editMode">{{active.content}}</h1>
+      <input type="text" ng-model="active.content" ng-if="editMode" class="title-input">
 
       <div class="dates">
         <div class="date">
@@ -20,7 +21,7 @@
       </div>
 
       <div class="links">
-        <h4>Important links</h4>
+        <h4 ng-if="active.links && active.links.length || editMode">Important links</h4>
         <div class="block" ng-if="!editMode && active.links && active.links.length">
           <a href="{{link}}" ng-repeat="link in active.links">{{link}}</a>
         </div>
@@ -33,7 +34,7 @@
       </div>
 
       <div class="description">
-        <h4>Description</h4>
+        <h4 ng-if="editMode || active.description">Description</h4>
         <textarea ng-model="active.description" ng-if="editMode"></textarea>
 <pre ng-if="!editMode">
 {{active.description}}

@@ -3,6 +3,7 @@ section.lists {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-bottom: 40px;
 }
 
 section.list {
@@ -15,6 +16,18 @@ section.list {
   width: 23%;
   padding: 20px;
   margin-right: 20px;
+
+  &.blue {
+    border-top: 3px solid @blue;
+  }
+
+  &.orange {
+    border-top: 3px solid @orange;
+  }
+
+  &.purple {
+    border-top: 3px solid @purple;
+  }
 
   &:last-child {
     margin-right: 0;

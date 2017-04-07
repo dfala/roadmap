@@ -5,6 +5,7 @@ function ($scope, apiService, $timeout, $rootScope) {
 
   $scope.init = function (lists) {
     $scope.lists = lists;
+    $scope.colors = ['blue', 'orange', 'purple'];
   };
 
   $scope.createTask = function (task, listId, listIndex) {
@@ -67,15 +68,16 @@ function ($scope, apiService, $timeout, $rootScope) {
   };
 
   $scope.deleteTask = function (task) {
-    apiService.deleteTask(task._id)
-    .then(function (response) {
-      console.info(response);
-      alertify.success('Task successfully removed.')
-    })
-    .catch(function (err) {
-      console.error(err);
-      alertify.error('There was a problem with your request.')
-    })
+    alertify.confirm("Are you sure you want to delete this task?", function () {
+      apiService.deleteTask(task._id)
+      .then(function (response) {
+        alertify.success('Task successfully removed.')
+      })
+      .catch(function (err) {
+        console.error(err);
+        alertify.error('There was a problem with your request.')
+      })
+    });
   };
 
   $rootScope.$on('timeline task clicked', function(e, task) {

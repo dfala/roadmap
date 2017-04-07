@@ -7,10 +7,17 @@ angular.module('Roadmap')
       lists: '='
     },
     link: function (scope, elem, attrs) {
+      var colors = ['blue', 'orange', 'purple'];
       var tasks = [];
-      scope.lists.forEach(function (list) {
+      scope.lists.forEach(function (list, listIndex) {
+        // if (listIndex === 1) return;
+        // if (listIndex !== 0) return;
         list.tasks.forEach(function (task) {
-          if (task.start) return tasks.push(task);
+          if (task.start) {
+            task.className = colors[listIndex];
+            task.nestedGroup = list._id;
+            return tasks.push(task);
+          }
         })
       });
 
@@ -20,7 +27,12 @@ angular.module('Roadmap')
       var items = new vis.DataSet(tasks);
 
       // Configuration for the Timeline
-      var options = {};
+      var options = {
+        max: new Date(2017,11,31),
+        min: new Date(2017,0,1),
+        zoomMax: 31556952000,
+        zoomMin: 1209600000
+      };
 
       // Create a Timeline
       var timeline = new vis.Timeline(container, items, options);
