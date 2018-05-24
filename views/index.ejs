@@ -12,6 +12,11 @@
     </div>
   </section>
 
+  <header ng-if="auth">
+    <h1>MyJar</h1>
+    <a>Sign out</a>
+  </header>
+
   <% include ./partials/timeline.ejs %>
 
   <section class="lists container" ng-if="auth">

@@ -10,7 +10,7 @@ function ($scope, apiService, $timeout, $rootScope) {
   };
 
   $scope.authenticate = function (passport) {
-    if (passport == 'guatemalaisthebest') {
+    if (passport == 'password') {
       $scope.auth = true;
       localStorage.auth = true;
       alertify.success('Welcome!');
@@ -24,6 +24,8 @@ function ($scope, apiService, $timeout, $rootScope) {
     .then(function (response) {
       $scope.newTask = '';
       $scope.lists[listIndex].tasks.push(response.data);
+      $scope.editMode = true;
+      $scope.activateTask(response.data);
     })
     .catch(function (err) {
       console.error(err)
