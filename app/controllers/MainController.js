@@ -71,7 +71,14 @@ function ($scope, apiService, $timeout, $rootScope) {
 
     apiService.updateActive(task)
     .then(function (response) {
-      $rootScope.$emit('task updated', response.data)
+      $scope.lists = $scope.lists.map(function (list) {
+        list.tasks = list.tasks.map(function (item) {
+          if (item._id === task._id) return response.data;
+          return item;
+        })
+        return list;
+      })
+      $rootScope.$emit('task updated', $scope.lists);
       alertify.success('Successfully updated your story.');
     })
     .catch(function (err) {
@@ -84,11 +91,20 @@ function ($scope, apiService, $timeout, $rootScope) {
     alertify.confirm("Are you sure you want to delete this task?", function () {
       apiService.deleteTask(task._id)
       .then(function (response) {
-        alertify.success('Task successfully removed.')
+        alertify.log('Task successfully removed');
+        $scope.lists = $scope.lists.map(function (list) {
+          list.tasks = list.tasks.filter(function (item) {
+            if (item._id === task._id) return false;
+            return true;
+          })
+          return list;
+        })
+        $rootScope.$emit('task updated', $scope.lists);
+        $scope.closeModal();
       })
       .catch(function (err) {
         console.error(err);
-        alertify.error('There was a problem with your request.')
+        alertify.error('There was a problem with your request.');
       })
     });
   };
