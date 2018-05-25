@@ -3,7 +3,7 @@
   <section class="modal animated-fast slideInRight" ng-click="$event.stopPropagation()">
     <div class="content">
       <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
-      <h1 ng-if="!editMode">{{active.content}}</h1>
+      <h1 class="title-input" ng-if="!editMode">{{active.content}}</h1>
       <input type="text" ng-model="active.content" ng-if="editMode" class="title-input">
 
       <div class="dates">

@@ -20,21 +20,7 @@
   <% include ./partials/timeline.ejs %>
 
   <section class="lists container" ng-if="auth">
-
-    <section class="list {{colors[$index]}}" ng-repeat="list in lists">
-      <h3> {{list.title}} </h3>
-
-      <div class="task-text" ng-repeat="task in list.tasks" ng-click="activateTask(task)">
-        <p> {{task.content}} </p>
-      </div>
-
-      <div class="task-text input">
-        <form ng-submit="createTask(newTask, list._id, $index); newTask= ''">
-          <input type="text" placeholder="New story..." ng-model="newTask" />
-        </form>
-      </div>
-    </section>
-
+    <% include ./partials/list.ejs %>
     <% include ./partials/new-list.ejs %>
   </section>
 

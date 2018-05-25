@@ -23,6 +23,33 @@ section.list {
     font-size: 14px;
   }
 
+  .list-header {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .more {
+    @dimensions: 30px;
+    border-radius: @br;
+    cursor: pointer;
+    width: @dimensions;
+    height: @dimensions;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    &:hover {
+      background-color: @light-gray;
+    }
+
+    p {
+      padding: 0;
+      margin: -8px 0 0 0;
+    }
+  }
+
   &.blue {
     border-top: 3px solid @blue;
   }
