@@ -25,10 +25,15 @@ section.modal {
   border-radius: 18px;
   box-shadow: inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173,186,204,.25), 0 2px 6px rgba(0,21,64,.14), 0 10px 20px rgba(0,21,64,.05);
 
+  h4 {
+    margin-bottom: 5px;
+  }
+
   .title-input {
     font-size: 42px;
-    line-height: 58px;
+    line-height: 50px;
     width: 90%;
+    min-height: 68px;
   }
 
   .dates {
@@ -36,7 +41,7 @@ section.modal {
     margin: 20px 0px;
 
     .date {
-      margin-right: 10px;
+      margin-right: 40px;
       width: 155px;
     }
   }
@@ -49,9 +54,8 @@ section.modal {
       }
 
       input {
-        width: 300px;
-        margin: 8px 0;
-        padding: 0 5px;
+        width: 500px;
+        margin: 0 0 10px 0;
       }
     }
   }
@@ -63,9 +67,13 @@ section.modal {
 
   textarea {
     width: 100%;
-    resize: vertical;
+    // resize: vertical;
     min-height: @local-height;
     margin-bottom: 15px;
+  }
+
+  input, textarea {
+    // background-color: @light-gray;
   }
 
   .x-modal {

@@ -14,7 +14,7 @@
 
   <header ng-if="auth">
     <h1>MyJar</h1>
-    <a>Sign out</a>
+    <a ng-click="logOut()">Log out</a>
   </header>
 
   <% include ./partials/timeline.ejs %>

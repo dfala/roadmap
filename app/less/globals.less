@@ -113,17 +113,6 @@ pre, textarea {
 	line-height: 18.5714px;
 }
 
-textarea {
-	border-radius: @br;
-	border: 1px solid @border-color;
-	padding: 10px 15px;
-
-	&:focus {
-		outline: none;
-		border: 1px solid @green;
-	}
-}
-
 * {
 	box-sizing: border-box;
 	color: #4d4d4d;
@@ -131,34 +120,60 @@ textarea {
 
 button {
 	padding: 10px 15px;
-	background-color: @green;
 	color: #fff;
 	border-radius: @br;
-	border: 1px solid lighten(@green, 10%);
 	font-size: 14px;
-	box-shadow: @shadow;
+	// box-shadow: @shadow;
+	// border: 1px solid darken(@blue, 10%);
+	border-style: none;
+	background-color: @blue;
 	cursor: pointer;
+	min-height: 41px;
 
 	&:focus {
 		outline: none;
 	}
 
 	&:hover {
-		background-color: darken(@green, 5%);
+		background-color: darken(@blue, 5%);
 	}
 
 	&:active {
-		background-color: darken(@green, 2%);
+		border-style: none;
+		background-color: darken(@blue, 2%);
 	}
 }
 
+textarea {
+	padding: 10px 15px;
+	resize: none;
+}
+
 input {
-	height: 36px;
-	border-radius: 2px;
-	border: 1px solid #d6d6d6;
-	padding: 0 5px;
+	height: 48px;
+	padding: 5px 15px;
+}
+
+input, textarea {
+	border: 1px solid @border-color;
+	border-radius: @big-radius;
+
+	&:focus {
+		outline: none;
+		border: 1px solid @blue;
+	}
 }
 
 a {
 	cursor: pointer;
+}
+
+.alertify-logs {
+	font-weight: 500;
+	.default {
+		background: @almost-black !important; }
+	.error {
+		background: @timeline-red !important; }
+	.success {
+		background: @blue !important; }
 }

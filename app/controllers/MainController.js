@@ -19,6 +19,11 @@ function ($scope, apiService, $timeout, $rootScope) {
     }
   };
 
+  $scope.logOut = function () {
+    delete localStorage.auth;
+    window.location.reload();
+  };
+
   $scope.createTask = function (task, listId, listIndex) {
     apiService.createTask(task, listId)
     .then(function (response) {
