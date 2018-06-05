@@ -8,21 +8,22 @@
   width: 100%;
   height: 100vh;
   z-index: 9;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 section.modal {
   width: 700px;
   max-width: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
+  min-height: 600px;
+  max-height: calc(~"100vh - 20px");
   background-color: @light-gray;
   z-index: 10;
   overflow-y: auto;
-  border-top-left-radius: 18px;
-  border-bottom-left-radius: 18px;
-  box-shadow: 0 0 6px -2px #000;
+  border-radius: 18px;
+  box-shadow: inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173,186,204,.25), 0 2px 6px rgba(0,21,64,.14), 0 10px 20px rgba(0,21,64,.05);
 
   .title-input {
     font-size: 42px;
