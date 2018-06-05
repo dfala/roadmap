@@ -1,9 +1,11 @@
 <section class="list {{colors[$index]}}" ng-repeat="list in lists">
   <div class="list-header">
     <h3> {{list.title}} </h3>
-    <div class="more">
+    <div class="more" ng-click="openListOptions()">
       <p>...</p>
     </div>
+
+    <% include ./list-options.ejs %>
   </div>
 
   <div class="task-text" ng-repeat="task in list.tasks" ng-click="activateTask(task)">

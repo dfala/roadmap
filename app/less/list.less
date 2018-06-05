@@ -27,6 +27,7 @@ section.list {
     display: flex;
     justify-content: center;
     justify-content: space-between;
+    position: relative;
   }
 
   .more {
@@ -47,6 +48,26 @@ section.list {
     p {
       padding: 0;
       margin: -8px 0 0 0;
+    }
+  }
+
+  .list-options {
+    position: absolute;
+    top: 32px;
+    right: -10px;
+    box-shadow: @shadow;
+    border-radius: @br;
+    background-color: #fff;
+    border: 1px solid @border-color;
+    min-width: 120px;
+
+    .option {
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: @light-gray;
+      }
     }
   }
 
