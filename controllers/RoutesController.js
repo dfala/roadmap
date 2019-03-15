@@ -16,7 +16,7 @@ Routes.index = function (req, res) {
       console.log('ERROR: ', err);
       return res.render('index', {lists: result});
     } else {
-      res.render('index', {lists: result});  
+      res.render('index', {lists: result});
     }
   });
 };

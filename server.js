@@ -32,7 +32,7 @@ if (keys.env !== "development") {
 
 // Connections
 var mongooseUri = keys.db;
-mongoose.createConnection(mongooseUri);
+mongoose.connect(mongooseUri);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
