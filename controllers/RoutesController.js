@@ -12,7 +12,11 @@ Routes.index = function (req, res) {
   List.find({})
   .populate('tasks')
   .exec(function (err, result) {
-    if (err) return res.status(500).send(err);
-    res.render('index', {lists: result});
+    if (err) {
+      console.log('ERROR: ', err);
+      return res.render('index', {lists: result});
+    } else {
+      res.render('index', {lists: result});  
+    }
   });
 };
