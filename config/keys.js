@@ -1,4 +1,5 @@
 module.exports = {
-  env: 'DEVELOPMENT',
-  db: 'mongodb://localhost/roadmap'
+  env: 'development',
+  db: 'mongodb://localhost/roadmap',
+  sessionSecret: 'super mega secret',
 }

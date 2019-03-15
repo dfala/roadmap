@@ -51,7 +51,7 @@ angular.module('Roadmap')
 
         // Configuration for the Timeline
         var options = {
-          max: new Date(2018,11,31),
+          max: new Date(2019,11,31),
           min: new Date(2018,0,1),
           zoomMax: 31556952000,
           zoomMin: 1209600000
