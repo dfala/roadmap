@@ -10,7 +10,7 @@
 
   <div id="task-{{task._id}}" class="task-text sortable"
        ng-repeat="task in list.tasks | orderBy: 'priority'" ng-click="activateTask(task)">
-    <p> {{task.priority}} // {{task.content}} </p>
+    <p> {{task.content}} </p>
   </div>
 
   <div class="task-text input">

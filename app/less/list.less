@@ -92,6 +92,13 @@ section.list {
     margin-right: 0;
   }
 
+  .placeholder {
+    background-color: @border-color;
+    width: 100%;
+    border-radius: @br;
+    margin-bottom: 10px;
+  }
+
   .task-text {
     border: 1px solid @light-border;
     margin-bottom: 10px;
@@ -99,6 +106,11 @@ section.list {
     min-height: 10px;
     padding: 15px;
     border-radius: @br;
+
+    &.selected {
+      transform: rotate(2deg);
+      box-shadow: @shadow;
+    }
 
     &:hover {
       background-color: @light-gray;

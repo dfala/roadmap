@@ -7,7 +7,14 @@ angular.module('Roadmap')
       $.getScript("/scripts/jquery-ui.min.js", function(){
         $(elem).sortable({
           tolerance: 'touch',
-          stop: function (e) {
+          placeholder: "placeholder",
+          start: function (e, ui) {
+            var elemHeight = $(ui.item[0]).outerHeight();
+            ui.placeholder.css("height", elemHeight);
+            ui.item.addClass('selected');
+          },
+          stop: function (e, ui) {
+            ui.item.removeClass('selected');
             var tasks = $('.sortable');
             tasks = Array.prototype.slice.call(tasks);
 
