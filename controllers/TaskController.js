@@ -1,8 +1,8 @@
-var taskCtrl   = module.exports = {},
+var Exports    = module.exports = {},
     Task       = require('../models/TaskModel'),
     List       = require('../models/ListModel');
 
-taskCtrl.create = function (req, res) {
+Exports.create = function (req, res) {
   var newTask = new Task(req.body);
   newTask.save(function (err, result) {
     if (err) return res.status(500).send(err);
@@ -20,7 +20,7 @@ taskCtrl.create = function (req, res) {
 };
 
 
-taskCtrl.update = function (req, res) {
+Exports.update = function (req, res) {
   Task.findById(req.params.taskId, function (err, task) {
     if (err) return res.status(404).send(err);
 
@@ -37,9 +37,24 @@ taskCtrl.update = function (req, res) {
   })
 };
 
-taskCtrl.delete = function (req, res) {
+Exports.delete = function (req, res) {
   Task.find({ "_id": req.params.taskId }).remove( function (err, result) {
     if (err) return res.status(400).send(err);
     return res.json(result);
   });
+};
+
+Exports.reorderTasks = function (req, res) {
+  Promise.all(req.body.orderedIds.map(function (taskId, index) {
+    return Task.update({
+      _id: taskId
+    }, {
+      priority: index
+    })
+  }))
+  .then(result => res.json(result))
+  .catch(err => {
+    console.log('Error on reorderTasks: ', err);
+    return res.status(500).send(err);
+  })
 };

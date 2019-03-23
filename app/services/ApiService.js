@@ -3,10 +3,11 @@ angular.module('Roadmap')
 .factory('apiService', ['$http', function ($http) {
   var service = {};
 
-  service.createTask = function (task, listId) {
+  service.createTask = function (task, listId, taskPriority) {
     var data = {
       list_id: listId,
-      content: task
+      content: task,
+      priority: taskPriority
     };
 
     return $http.post('/api/task', data)
@@ -22,7 +23,14 @@ angular.module('Roadmap')
 
   service.deleteTask = function (taskId) {
     return $http.delete('/api/task/' + taskId);
-  }
+  };
+
+  service.reorderTasks = function (ids, listId) {
+    return $http.put('/api/tasks/reorder', {
+      orderedIds: ids,
+      listId: listId
+    })
+  };
 
   return service;
 }]);

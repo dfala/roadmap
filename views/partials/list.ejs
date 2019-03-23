@@ -1,4 +1,4 @@
-<section class="list {{colors[$index]}}" ng-repeat="list in lists">
+<section class="list {{colors[$index]}}" ng-repeat="list in lists" sortable>
   <div class="list-header">
     <h3> {{list.title}} </h3>
     <div class="more" ng-click="openListOptions()">
@@ -8,8 +8,9 @@
     <% include ./list-options.ejs %>
   </div>
 
-  <div class="task-text" ng-repeat="task in list.tasks" ng-click="activateTask(task)">
-    <p> {{task.content}} </p>
+  <div id="task-{{task._id}}" class="task-text sortable"
+       ng-repeat="task in list.tasks | orderBy: 'priority'" ng-click="activateTask(task)">
+    <p> {{task.priority}} // {{task.content}} </p>
   </div>
 
   <div class="task-text input">

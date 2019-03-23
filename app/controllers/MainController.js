@@ -25,7 +25,9 @@ function ($scope, apiService, $timeout, $rootScope) {
   };
 
   $scope.createTask = function (task, listId, listIndex) {
-    apiService.createTask(task, listId)
+    var taskPriority = $scope.lists[listIndex].tasks.length;
+    
+    apiService.createTask(task, listId, taskPriority)
     .then(function (response) {
       $scope.newTask = '';
       $scope.lists[listIndex].tasks.push(response.data);
