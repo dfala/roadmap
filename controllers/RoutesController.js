@@ -16,12 +16,12 @@ Routes.project = function (req, res) {
   .exec(function (err, result) {
     if (err) {
       console.log('ERROR: ', err);
-      return res.render('index', {
+      return res.render('project', {
         lists: result,
         projectId: req.params.projectId,
       });
     } else {
-      res.render('index', {
+      res.render('project', {
         lists: result,
         projectId: req.params.projectId,
       });
@@ -36,6 +36,6 @@ Routes.dashboard = function (req, res) {
   })
   .catch(function (err) {
     console.log('ERROR: ', err);
-    return res.render('index', {projects: []});
+    return res.render('dashboard', {projects: []});
   })
 };

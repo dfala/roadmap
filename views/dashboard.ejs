@@ -2,8 +2,8 @@
 
 <section ng-controller="DashboardController" ng-init="init(<%= JSON.stringify(projects) %>)" ng-cloak>
 
-  <header ng-if="auth">
-    <h1>TinyLine</h1>
+  <header>
+    <h1><a href="/">Dashboard</a></h1>
     <a ng-click="logOut()">Log out</a>
   </header>
 
