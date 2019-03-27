@@ -1,0 +1,17 @@
+<% include ./partials/header.ejs %>
+
+<section ng-controller="DashboardController" ng-init="init(<%= JSON.stringify(projects) %>)" ng-cloak>
+
+  <header ng-if="auth">
+    <h1>TinyLine</h1>
+    <a ng-click="logOut()">Log out</a>
+  </header>
+
+  <a ng-click="createNewProject()">New project</a>
+
+  <a ng-repeat="project in projects" ng-href="/project/{{project._id}}">
+    {{project.name}}
+  </a>
+</section>
+
+<% include ./partials/footer.ejs %>

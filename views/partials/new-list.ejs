@@ -1,6 +1,6 @@
 <section class="list new-list" ng-click="enableNewList()">
   <div>
-    <h2 ng-if="!newListEnabled">New project</h2>
+    <h2 ng-if="!newListEnabled">New list</h2>
     <form ng-if="newListEnabled" ng-submit="createList(newList); $event.stopPropagation(); newList= ''">
       <input type="text" id="new-list" placeholder="Project name..." autocomplete="off" ng-model="newList"/>
     </form>

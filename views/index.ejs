@@ -1,6 +1,6 @@
 <% include ./partials/header.ejs %>
 
-<section ng-controller="MainController" ng-init="init(<%= JSON.stringify(lists) %>)" ng-cloak>
+<section ng-controller="MainController" ng-init="init(<%= JSON.stringify(lists) %>, <%= JSON.stringify(projectId) %>)" ng-cloak>
   <section class="auth" ng-if="!auth">
     <div class="message">
       <h1>What's the secret code?</h1>
@@ -13,7 +13,7 @@
   </section>
 
   <header ng-if="auth">
-    <h1>Duolingo B1 Timeline</h1>
+    <h1><a href="/">Home</a> // Duolingo B1 Timeline</h1>
     <a ng-click="logOut()">Log out</a>
   </header>
 

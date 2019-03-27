@@ -3,9 +3,10 @@ angular.module('Roadmap')
 .controller('MainController', ['$scope', 'apiService', '$timeout', '$rootScope',
 function ($scope, apiService, $timeout, $rootScope) {
 
-  $scope.init = function (lists) {
+  $scope.init = function (lists, projectId) {
     $scope.lists = lists;
     $scope.colors = ['blue', 'orange', 'purple', 'green'];
+    $scope.projectId = projectId;
     if (localStorage.auth) $scope.auth = true;
   };
 
@@ -26,7 +27,7 @@ function ($scope, apiService, $timeout, $rootScope) {
 
   $scope.createTask = function (task, listId, listIndex) {
     var taskPriority = $scope.lists[listIndex].tasks.length;
-    
+
     apiService.createTask(task, listId, taskPriority)
     .then(function (response) {
       $scope.newTask = '';
@@ -41,7 +42,7 @@ function ($scope, apiService, $timeout, $rootScope) {
 
 
   $scope.createList = function (list) {
-    apiService.createList(list)
+    apiService.createList(list, $scope.projectId)
     .then(function (response) {
       $scope.lists.push(response.data);
     })

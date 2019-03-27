@@ -12,7 +12,8 @@ var TaskSchema = new mongoose.Schema({
   created_by    : { type: String, required: true, default: 'Daniel' },
   created_date  : { type: Date, default: Date.now },
   list_id       : { type: mongoose.Schema.Types.ObjectId, ref: 'List' },
-  priority      : { type: Number, default: 0 }
+  priority      : { type: Number, default: 0 },
+  project       : { type: mongoose.Schema.Types.ObjectId, ref: 'Project' },
 });
 
 module.exports = mongoose.model('Task', TaskSchema);

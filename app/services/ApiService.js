@@ -13,8 +13,11 @@ angular.module('Roadmap')
     return $http.post('/api/task', data)
   };
 
-  service.createList = function (list) {
-    return $http.post('/api/list', {title: list})
+  service.createList = function (list, projectId) {
+    return $http.post('/api/list', {
+      title: list,
+      project: projectId,
+    })
   };
 
   service.updateActive = function (task) {
@@ -30,6 +33,10 @@ angular.module('Roadmap')
       orderedIds: ids,
       listId: listId
     })
+  };
+
+  service.createNewProject = function () {
+    return $http.post('/api/project')
   };
 
   return service;
