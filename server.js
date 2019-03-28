@@ -21,14 +21,14 @@ var https = require('https'),
     http  = require('http'),
     fs    = require('fs');
 
-if (keys.env !== "development") {
-  var privateKey  = fs.readFileSync('./config/myblueplayground.key', 'utf8'),
-      certificate = fs.readFileSync('./config/server.crt', 'utf8'),
-      ca          = fs.readFileSync('./config/bundle.ca-bundle', 'utf8'),
-      credentials = {key: privateKey, cert: certificate, ca: ca};
-
-  var sessionCookie = { httpOnly : true, secure: true };
-}
+// if (keys.env !== "development") {
+//   var privateKey  = fs.readFileSync('./config/myblueplayground.key', 'utf8'),
+//       certificate = fs.readFileSync('./config/server.crt', 'utf8'),
+//       ca          = fs.readFileSync('./config/bundle.ca-bundle', 'utf8'),
+//       credentials = {key: privateKey, cert: certificate, ca: ca};
+//
+//   var sessionCookie = { httpOnly : true, secure: true };
+// }
 
 // Connections
 var mongooseUri = keys.db;

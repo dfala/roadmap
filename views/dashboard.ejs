@@ -13,7 +13,9 @@
   </header>
 
   <div class="projects">
-    <a class="project" ng-click="createNewProject()">New project</a>
+    <a class="project new-project" ng-click="createNewProject()">
+      <h3>+ New project</h3>
+    </a>
 
     <a class="project" ng-repeat="project in projects" ng-href="/project/{{project._id}}">
       <h3>{{project.name}}</h3>

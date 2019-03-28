@@ -20,7 +20,7 @@ angular.module('Roadmap')
 
       // paint timeline
       function createTimeline (lists) {
-        var colors = ['blue', 'orange', 'purple', 'green'];
+        var colors = ['blue', 'orange', 'purple', 'green', 'blue', 'orange', 'purple', 'green', 'blue', 'orange', 'purple', 'green', 'blue', 'orange', 'purple', 'green'];
         var groups = lists.map(function (list) {
           return {
             id: list._id,
