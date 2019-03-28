@@ -16,7 +16,7 @@
     <a class="project" ng-click="createNewProject()">New project</a>
 
     <a class="project" ng-repeat="project in projects" ng-href="/project/{{project._id}}">
-      {{project.name}}
+      <h3>{{project.name}}</h3>
     </a>
   </div>
 </section>
