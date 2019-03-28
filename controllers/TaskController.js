@@ -81,3 +81,18 @@ Exports.reorderTasks = function (req, res) {
     }))
   };
 };
+
+Exports.reorderTasksInList = function (req, res) {
+  Promise.all(req.body.orderedIds.map(function (taskId, index) {
+    return Task.update({
+      _id: taskId
+    }, {
+      priority: index
+    })
+  }))
+  .then(result => res.json(result))
+  .catch(err => {
+    console.log('Error on reorderTasks: ', err);
+    return res.status(500).send(err);
+  })
+};

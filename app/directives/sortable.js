@@ -1,10 +1,10 @@
 angular.module('Roadmap')
 
-.directive('sortable', ['apiService', function (apiService) {
+.directive('sortable', ['apiService', '$timeout', function (apiService, $timeout) {
   return {
     restrict: 'A',
     link: function (scope, elem, attrs) {
-      $.getScript("/scripts/jquery-ui.min.js", function(){
+      $timeout(function () {
         $('.connectedSortable').sortable({
           tolerance: 'touch',
           placeholder: "placeholder",
@@ -16,14 +16,13 @@ angular.module('Roadmap')
           },
           stop: function (e, ui) {
             ui.item.removeClass('selected');
-            // var tasks = $('.sortable');
-            // tasks = Array.prototype.slice.call(tasks);
-            //
-            // var ids = tasks.map(function (task) {
-            //   return task.id.substring(5);
-            // })
-            //
-            // reorderTasks(ids);
+            var tasks = $('.sortable');
+            tasks = Array.prototype.slice.call(tasks);
+            var ids = tasks.map(function (task) {
+              return task.id.substring(5);
+            })
+
+            reorderTasksInList(ids);
             $('.sortable').removeClass('grabbing');
           },
           receive: function (e, ui) {
@@ -50,13 +49,23 @@ angular.module('Roadmap')
             reorderTasks(data);
           },
         });
-      });
+      }, 10);
+
+      function reorderTasksInList (ids) {
+        apiService.reorderTasksInList(ids, scope.list._id)
+        .then(function (response) {
+          // console.warn(response.data);
+        })
+        .catch(function (err) {
+          console.error(err);
+          alertify.error('There was an error re-ordering your tasks...')
+        })
+      };
 
       function reorderTasks (data) {
-        console.log(data);
         apiService.reorderTasks(data)
         .then(function (response) {
-          console.warn(response.data);
+          // console.warn(response.data);
         })
         .catch(function (err) {
           console.error(err);
