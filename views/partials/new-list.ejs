@@ -2,7 +2,7 @@
   <div>
     <h2 ng-if="!newListEnabled">New list</h2>
     <form ng-if="newListEnabled" ng-submit="createList(newList); $event.stopPropagation(); newList= ''">
-      <input type="text" id="new-list" placeholder="Project name..." autocomplete="off" ng-model="newList"/>
+      <input type="text" id="new-list" placeholder="List name..." autocomplete="off" ng-model="newList"/>
     </form>
   </div>
 </section>

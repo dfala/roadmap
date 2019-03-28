@@ -11,22 +11,41 @@ module.exports = function (app) {
 };
 
 Routes.project = function (req, res) {
-  List.find({project: req.params.projectId})
-  .populate('tasks')
-  .exec(function (err, result) {
-    if (err) {
-      console.log('ERROR: ', err);
-      return res.render('project', {
-        lists: result,
-        projectId: req.params.projectId,
-      });
-    } else {
-      res.render('project', {
-        lists: result,
-        projectId: req.params.projectId,
-      });
-    }
+  const PROJECTID = req.params.projectId;
+
+  Promise.all([getLists(), getProject()])
+  .then(results => {
+    res.render('project', {
+      lists: results[0],
+      project: results[1],
+    });
+  })
+  .catch(err => {
+    console.log('ERROR on Routes.project: ', err);
+    return res.render('project', {
+      lists: [],
+      project: [],
+    });
   });
+
+  function getLists () {
+    return new Promise((resolve, reject) => {
+      List.find({project: PROJECTID})
+      .populate('tasks')
+      .exec(function (err, result) {
+        if (err) return reject(err);
+        return resolve(result);
+      });
+    })
+  };
+
+  function getProject() {
+    return new Promise ((resolve, reject) => {
+      Project.findById(PROJECTID)
+      .then(result => resolve(result))
+      .catch(err => reject(err));
+    })
+  };
 };
 
 Routes.dashboard = function (req, res) {

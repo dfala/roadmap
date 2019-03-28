@@ -1,12 +1,12 @@
 angular.module('Roadmap')
 
-.controller('MainController', ['$scope', 'apiService', '$timeout', '$rootScope',
+.controller('ProjectController', ['$scope', 'apiService', '$timeout', '$rootScope',
 function ($scope, apiService, $timeout, $rootScope) {
 
-  $scope.init = function (lists, projectId) {
+  $scope.init = function (lists, project) {
     $scope.lists = lists;
     $scope.colors = ['blue', 'orange', 'purple', 'green'];
-    $scope.projectId = projectId;
+    $scope.project = project;
     if (localStorage.auth) $scope.auth = true;
   };
 
@@ -42,7 +42,7 @@ function ($scope, apiService, $timeout, $rootScope) {
 
 
   $scope.createList = function (list) {
-    apiService.createList(list, $scope.projectId)
+    apiService.createList(list, $scope.project._id)
     .then(function (response) {
       $scope.lists.push(response.data);
     })

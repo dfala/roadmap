@@ -11,7 +11,7 @@ function ($scope, apiService, $timeout, $rootScope) {
     apiService.createNewProject()
     .then(function (response) {
       console.log(response.data);
-      window.location.href = `/project/${response.data._id}`;
+      window.location.href = "/project/" + response.data._id;
     })
     .catch(function (err) {
       console.error(err);
