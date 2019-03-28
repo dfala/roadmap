@@ -45,16 +45,39 @@ Exports.delete = function (req, res) {
 };
 
 Exports.reorderTasks = function (req, res) {
-  Promise.all(req.body.orderedIds.map(function (taskId, index) {
-    return Task.update({
-      _id: taskId
-    }, {
-      priority: index
-    })
+  // for each item in array
+    // update tasks in list
+    // update task
+      // update list_id
+      // update task prority
+
+  Promise.all(req.body.data.map(function (list) {
+    return Promise.all([updateTasksInList(list), udpateTasks(list)])
   }))
   .then(result => res.json(result))
   .catch(err => {
     console.log('Error on reorderTasks: ', err);
-    return res.status(500).send(err);
-  })
+    return res.status(500).send(err)
+  });
+
+  function updateTasksInList (list) {
+    return List.update({
+      _id: list.listId
+    }, {
+      $set: {
+        tasks: list.taskIds
+      }
+    })
+  };
+
+  function udpateTasks (list) {
+    return Promise.all(list.taskIds.map((taskId, index) => {
+      return Task.update({
+        _id: taskId
+      }, {
+        list_id: list.listId,
+        priority: index
+      })
+    }))
+  };
 };

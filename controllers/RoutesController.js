@@ -29,22 +29,11 @@ Routes.project = function (req, res) {
   });
 
   function getLists () {
-    return new Promise((resolve, reject) => {
-      List.find({project: PROJECTID})
-      .populate('tasks')
-      .exec(function (err, result) {
-        if (err) return reject(err);
-        return resolve(result);
-      });
-    })
+    return List.find({project: PROJECTID}).populate('tasks').exec();
   };
 
   function getProject() {
-    return new Promise ((resolve, reject) => {
-      Project.findById(PROJECTID)
-      .then(result => resolve(result))
-      .catch(err => reject(err));
-    })
+    return Project.findById(PROJECTID);
   };
 };
 
