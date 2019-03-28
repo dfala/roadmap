@@ -25,6 +25,19 @@ function ($scope, apiService, $timeout, $rootScope) {
     window.location.reload();
   };
 
+  $scope.renameProject = function () {
+    alertify.prompt("Rename your project:", function (val, ev) {
+      apiService.renameProject($scope.project._id, val)
+      .then(function (result) {
+        $scope.project.name = val;
+      })
+      .catch(function (err) {
+        console.error(err);
+        alertify.error('There was a problem with your request...')
+      })
+    })
+  };
+
   $scope.createTask = function (task, listId, listIndex) {
     var taskPriority = $scope.lists[listIndex].tasks.length;
 

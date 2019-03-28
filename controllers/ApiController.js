@@ -10,4 +10,5 @@ module.exports = function (app) {
   app.put('/api/tasks/reorder', TaskController.reorderTasks);
   app.post('/api/list', ListController.create);
   app.post('/api/project', ProjectController.create);
+  app.put('/api/project/rename/:projectId', ProjectController.rename);
 }

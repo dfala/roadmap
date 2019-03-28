@@ -39,5 +39,11 @@ angular.module('Roadmap')
     return $http.post('/api/project')
   };
 
+  service.renameProject = function (projectId, newName) {
+    return $http.put('/api/project/rename/' + projectId, {
+      name: newName,
+    })
+  };
+
   return service;
 }]);

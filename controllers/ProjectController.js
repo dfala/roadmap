@@ -13,7 +13,7 @@ Exports.create = function (req, res) {
 };
 
 
-Exports.update = function (req, res) {
+Exports.rename = function (req, res) {
   Project.findById(req.params.projectId, function (err, project) {
     if (err) return res.status(404).send(err);
     project.name = req.body.name;

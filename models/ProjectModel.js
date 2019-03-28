@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var ProjectSchema = new mongoose.Schema({
-  name: { type: String, required: true, default: '( untitled )' },
+  name: { type: String, required: true, default: 'Untitled' },
   created_by: { type: String, required: true, default: 'Jane' },
   created_date: { type: Date, default: Date.now },
 });

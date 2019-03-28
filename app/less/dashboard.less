@@ -11,13 +11,21 @@ section.dashboard {
   .project {
     background-color: #fff;
     width: 300px;
+    min-height: 100px;
     padding: 20px;
     margin: 10px;
     border: 1px solid @border-color;
     border-radius: @br;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
     &:hover {
-      background-color: @light-gray;
+      background-color: lighten(@blue, 55%);
+      box-shadow: @shadow;
+      // transition: box-shadow 83ms;
+      transition: box-shadow 0.18s ease-in-out;
+      transition: background-color 0.18s ease-in-out;
     }
   }
 }

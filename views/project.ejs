@@ -15,7 +15,7 @@
   <header ng-if="auth">
     <h1><a href="/">Dashboard</a>
       <span class="separator">//</span>
-      {{project.name}}
+      <a ng-click="renameProject()">{{project.name}}</a>
     </h1>
     <a ng-click="logOut()">Log out</a>
   </header>
