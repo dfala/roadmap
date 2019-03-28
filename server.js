@@ -47,14 +47,18 @@ if (keys.env === 'development') {
 }
 
 if (keys.env !== 'development') {
-  http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-    res.end();
-  }).listen(portNum);
+  // http.createServer(function (req, res) {
+  //   res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+  //   res.end();
+  // }).listen(portNum);
+  //
+  // var httpsServer = https.createServer(credentials, app);
+  // httpsServer.listen(443, function () {
+  //   console.log('HTTPS server listening on port: 443 in ' + keys.env + ' mode.');
+  // });
 
-  var httpsServer = https.createServer(credentials, app);
-  httpsServer.listen(443, function () {
-    console.log('HTTPS server listening on port: 443 in ' + keys.env + ' mode.');
+  app.listen(portNum, function () {
+      console.log('Making some pancakes on port:', portNum);
   });
 
 } else {
