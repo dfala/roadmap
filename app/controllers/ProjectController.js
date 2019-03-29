@@ -5,7 +5,7 @@ function ($scope, apiService, $timeout, $rootScope) {
 
   $scope.init = function (lists, project) {
     $scope.lists = lists;
-    $scope.colors = ['blue', 'orange', 'purple', 'green'];
+    $scope.colors = ['blue', 'orange', 'purple', 'green', 'blue', 'orange', 'purple', 'green', 'blue', 'orange', 'purple', 'green'];
     $scope.project = project;
     if (localStorage.auth) $scope.auth = true;
   };
