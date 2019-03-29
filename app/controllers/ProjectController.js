@@ -135,4 +135,9 @@ function ($scope, apiService, $timeout, $rootScope) {
     $scope.$digest();
   });
 
+  $rootScope.$on('close modal', function (e, task) {
+    $scope.closeModal();
+    $scope.$digest();
+  })
+
 }]);

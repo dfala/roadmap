@@ -1,5 +1,5 @@
-<div ng-if="modalOpen" class="modal-backdrop animated-fast fadeIn" ng-click="closeModal()">
-  <section class="modal animated-fast fadeIn" ng-click="$event.stopPropagation()">
+<div ng-if="modalOpen" class="modal-backdrop" ng-click="closeModal()" esc>
+  <section class="modal" ng-click="$event.stopPropagation()">
     <div class="content">
       <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
       <h1 class="title-input" ng-if="!editMode">{{active.content}}</h1>

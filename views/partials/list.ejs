@@ -15,10 +15,16 @@
     </div>
   </div>
 
-  <div class="task-text input">
-    <form ng-submit="createTask(newTask, list._id, $index); newTask= ''">
-      <input type="text" placeholder="New task..." ng-model="newTask" />
-    </form>
+  <div toggle>
+    <p class="new-task" ng-show="!newListEnabled" ng-click="toggleShowNewTask()">
+      + Add a task
+    </p>
+
+    <div class="task-text input" ng-show="newListEnabled">
+      <form ng-submit="createTask(newTask, list._id, $index); newTask= ''; newListEnabled = false">
+        <input type="text" placeholder="New task..." ng-model="newTask" />
+      </form>
+    </div>
   </div>
 </section>
 
