@@ -27,6 +27,7 @@ Exports.update = function (req, res) {
     task.content      = req.body.content;
     task.description  = req.body.description;
     task.links        = req.body.links;
+
     if (new Date(req.body.start) > new Date(1990,00,01)) task.start = req.body.start;
     if (new Date(req.body.end) > new Date(1990,00,01)) task.end = req.body.end;
 

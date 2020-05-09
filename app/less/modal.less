@@ -17,7 +17,7 @@
 section.modal {
   width: 700px;
   max-width: 100%;
-  min-height: 600px;
+  min-height: 400px;
   max-height: calc(~"100vh - 20px");
   background-color: @light-gray;
   z-index: 10;
@@ -37,13 +37,11 @@ section.modal {
   }
 
   .dates {
-    display: flex;
     margin: 20px 0px;
+  }
 
-    .date {
-      margin-right: 40px;
-      width: 155px;
-    }
+  .right-item {
+    margin-bottom: 20px;
   }
 
   .links {
@@ -83,8 +81,20 @@ section.modal {
   }
 
   .content {
-    padding: 20px;
+    padding: 40px;
     background-color: #fff;
+
+    .content-body {
+      display: flex;
+    }
+
+    .left {
+      width: 70%;
+    }
+
+    .right {
+      width: 30%;
+    }
   }
 
   .footer {

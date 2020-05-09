@@ -73,8 +73,8 @@ function ($scope, apiService, $timeout, $rootScope) {
 
   $scope.activateTask = function (task) {
     $scope.modalOpen = true;
-    task.start = new Date(task.start);
-    task.end = new Date(task.end);
+    if (task.date) task.start = new Date(task.start);
+    if (task.end) task.end = new Date(task.end);
     $scope.active = task;
   };
 
