@@ -49,10 +49,19 @@ angular.module('Roadmap')
         // Create a DataSet (allows two way data-binding)
         var items = new vis.DataSet(tasks);
 
+        // This crap doesn't work
+        var oneYearFromNow = new Date();
+        oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+
+        var oneYearAgo = new Date();
+        oneYearAgo.setFullYear(oneYearFromNow.getFullYear() - 1);
+
+        var endOfYear = new Date(new Date().getFullYear(), 11, 31);
+
         // Configuration for the Timeline
         var options = {
-          max: new Date(2019,11,31),
-          min: new Date(2018,0,1),
+          max: (oneYearFromNow >= endOfYear) ? oneYearFromNow : endOfYear,
+          min: oneYearAgo,
           zoomMax: 31556952000,
           zoomMin: 1209600000
         };

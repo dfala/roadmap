@@ -100,7 +100,7 @@ function ($scope, apiService, $timeout, $rootScope) {
         return list;
       })
       $rootScope.$emit('task updated', $scope.lists);
-      alertify.success('Successfully updated your task.');
+      alertify.success('Successfully updated your task');
     })
     .catch(function (err) {
       console.error(err);

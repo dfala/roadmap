@@ -28,6 +28,10 @@ angular.module('Roadmap')
     return $http.delete('/api/task/' + taskId);
   };
 
+  service.deleteList = function (listId) {
+    return $http.delete('/api/list/' + listId);
+  };
+
   service.reorderTasksInList = function (ids, listId) {
     return $http.put('/api/tasks/reorder-in-list', {
       orderedIds: ids,

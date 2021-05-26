@@ -7,14 +7,14 @@
     <h1><a href="/">Dashboard</a></h1>
     <div class="right">
       <a href="/profile">Profile</a>
-      <span class="separator">//</span>
+      <span class="separator">/</span>
       <a ng-click="logOut()">Log out</a>
     </div>
   </header>
 
   <div class="projects">
     <a class="project new-project" ng-click="createNewProject()">
-      <h3>+ New list</h3>
+      <h3>+ New calendar</h3>
     </a>
 
     <a class="project" ng-repeat="project in projects" ng-href="/project/{{project._id}}">

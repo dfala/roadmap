@@ -10,6 +10,7 @@ module.exports = function (app) {
   app.put('/api/tasks/reorder-in-list', TaskController.reorderTasksInList);
   app.put('/api/tasks/reorder', TaskController.reorderTasks);
   app.post('/api/list', ListController.create);
+  app.delete('/api/list/:listId', ListController.delete);
   app.post('/api/project', ProjectController.create);
   app.put('/api/project/rename/:projectId', ProjectController.rename);
 }

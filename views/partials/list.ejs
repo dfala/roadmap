@@ -1,7 +1,7 @@
-<section class="list {{colors[$index]}}" ng-repeat="list in lists">
+<section class="list {{colors[$index]}}" ng-repeat="list in lists" ng-controller="ListController">
   <div class="list-header">
     <h3> {{list.title}} </h3>
-    <div class="more" ng-click="openListOptions()">
+    <div class="more" ng-click="toggleDisplayListOptions()">
       <p>...</p>
     </div>
 

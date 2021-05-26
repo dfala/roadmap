@@ -39,10 +39,18 @@ Exports.update = function (req, res) {
 };
 
 Exports.delete = function (req, res) {
-  Task.find({ "_id": req.params.taskId }).remove( function (err, result) {
-    if (err) return res.status(400).send(err);
-    return res.json(result);
-  });
+  Exports.executeDeleteTask(req.params.taskId)
+  .then(result => res.json(result))
+  .catch(err => res.status(400).send(err))
+};
+
+Exports.executeDeleteTask = function (taskId) {
+  return new Promise ((resolve, reject) => {
+    Task.find({ "_id": taskId }).remove( function (err, result) {
+      if (err) return reject(err);
+      return resolve(result);
+    });
+  })
 };
 
 Exports.reorderTasks = function (req, res) {
