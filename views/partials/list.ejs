@@ -16,11 +16,11 @@
   </div>
 
   <div toggle>
-    <p class="new-task" ng-show="!newListEnabled" ng-click="toggleShowNewTask()">
+    <p class="new-task" ng-show="!newTaskEnabled" ng-click="toggleShowNewTask()">
       + Add a task
     </p>
 
-    <div class="task-text input" ng-show="newListEnabled">
+    <div class="task-text input" ng-show="newTaskEnabled">
       <form ng-submit="createTask(newTask, list._id, $index); newTask= ''; newListEnabled = false">
         <input type="text" placeholder="New task..." ng-model="newTask" />
       </form>

@@ -46,7 +46,6 @@ function ($scope, apiService, $timeout, $rootScope) {
       $scope.newTask = '';
       $scope.lists[listIndex].tasks.push(response.data);
       $scope.editMode = true;
-      $scope.activateTask(response.data);
     })
     .catch(function (err) {
       console.error(err)
