@@ -3,7 +3,7 @@
     <div class="content">
       <img src="https://jane.com/cdn.jane/content/images/jane/close.svg" class="x-modal" ng-click="closeModal()">
       <!-- <h1 class="title-input">{{active.content}}</h1> -->
-      <textarea class="title-input" ng-if="!editMode" line-break rows="1" ng-model="active.content"></textarea>
+      <textarea class="title-input" line-break rows="1" ng-model="active.content"></textarea>
 
       <div class="content-body">
         <div class="left">
@@ -12,15 +12,20 @@
               <img src="/images/align-left.svg">
               Description
             </h3>
+            <div class="description-placeholder" ng-click="editingDescription = true" ng-show="!editingDescription">
+              Add a more detailed description...
+            </div>
             <textarea
+              ng-if="editingDescription"
+              ng-cloak
               class="description-text"
               ng-model="active.description"
               wrap="off"
               placeholder="Add a more detailed description...">
             </textarea>
-<pre ng-if="!editMode">
+<!-- <pre ng-if="!editMode">
 {{active.description}}
-</pre>
+</pre> -->
           </div>
         </div>
 
@@ -28,13 +33,39 @@
           <div class="dates">
             <div class="right-item">
               <h3 class="small-title">Add to card</h3>
-              <h4>Start Date</h4>
+
+              <div class="add-ons">
+                <div class="add-on">
+                  <img src="/images/clock.svg">
+                  Start date
+                </div>
+                <div class="add-on">
+                  <img src="/images/calendar.svg">
+                  End date
+                </div>
+                <div class="add-on">
+                  <img src="/images/link.svg">
+                  Links
+                </div>
+                <div class="add-on">
+                  <img src="/images/user.svg">
+                  Members
+                </div>
+                <div class="add-on">
+                  <img src="/images/tag.svg">
+                  Labels
+                </div>
+                <div class="add-on">
+                  <img src="/images/paperclip.svg">
+                  Attachment
+                </div>
+              </div>
+
               <p ng-if="!editMode" parse-date>{{active.start | date:'MMM d, yyyy'}}</p>
               <input type="date" ng-model="active.start" ng-if="editMode">
             </div>
 
             <div class="right-item">
-              <h4>End Date</h4>
               <p ng-if="!editMode">{{active.end | date:'MMM d, yyyy'}}</p>
               <input type="date" ng-model="active.end" ng-if="editMode">
             </div>
